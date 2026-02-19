@@ -15,3 +15,4 @@
 | `nazwaUzytk` | **String** | Unikalna nazwa użytkownika. | `"JanekDzbanek"` |
 | `ocena` | **Int** | Ocena w skali od 1 do 10. | `9` |
 | `recenzja` | **String** | Recenzja użytkownika. | `"Film wywołuje ogromne emocje, polecam bardzo"` |
+| `film_id` | **ObjectId** | Referencja do filmu | `ObjectId("1")` |
