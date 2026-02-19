@@ -8,3 +8,10 @@
 | `aktorzy` | **Array** | Lista aktorów danego filmu. | `["Kate Winslet", "Leonardo DiCaprio", "Billy Zane", "Kathy Bates"]` |
 | `typDostępu` | **String** | Klasa filmu. | `"Premium"` |
 | `licznikWyświetleń` | **Int** | Liczba oglądalności filmu. | `42567842` |
+
+### 2. Kolekcja: `Recenzje`
+| Pole | Typ | Opis | Przykład |
+| :--- | :--- | :--- | :--- |
+| `nazwaUzytk` | **String** | Unikalna nazwa użytkownika. | `"JanekDzbanek"` |
+| `ocena` | **Int** | Ocena w skali od 1 do 10. | `9` |
+| `recenzja` | **String** | Recenzja użytkownika. | `"Film wywołuje ogromne emocje, polecam bardzo"` |
