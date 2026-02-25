@@ -15,3 +15,12 @@ const rokIOcena = db.filmy.aggregate([
     { $match: { data_premiery: { $gt: new Date("2000-01-01")}, "recenzje.ocena": { $gt: 8 }}},
     { $project: { _id: 0, tytuł: 1, data_premiery: 1, ocena: "$recenzje.ocena" }}]).toArray()
 printjson(rokIOcena)
+
+// Średnia ocen dla każdego gatunku
+print("\n3. Jaka jest średnia ocena dla każdego gatunku?")
+const sredniaOcena = db.filmy.aggregate([
+    { $lookup: { from: "recenzje", localField: "_id", foreignField: "film_id", as: "recenzje" }},
+    { $unwind: "$recenzje" },
+    {$unwind: "$gatunki"},
+    { $group: { _id: "$gatunki", sredniaOcen: { $avg: "$recenzje.ocena"}}}]).toArray()
+printjson(sredniaOcena)
