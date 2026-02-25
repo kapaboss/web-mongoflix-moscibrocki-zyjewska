@@ -24,3 +24,14 @@ const sredniaOcena = db.filmy.aggregate([
     {$unwind: "$gatunki"},
     { $group: { _id: "$gatunki", sredniaOcen: { $avg: "$recenzje.ocena"}}}]).toArray()
 printjson(sredniaOcena)
+
+// Filmy, których wyświetlenia są wieksze niż 40000000 zostają wyróżnione
+const featured = db.filmy.updateMany(
+    { licznikWyświetleń: { $gt: 40000000 } },
+    { $set: { featured: true } }
+);
+if (featured.modifiedCount > 0) {
+    print("\n--- FILMY Z LICZNIKIEM WYŚWIETLEŃ POWYŻEJ 40 MILIONÓW ZOSTAŁY WYRÓŻNIONE ---")
+} else {
+    print("\n--- NIE ZNALEZIONO FILMÓW DO AKTUALIZACJI ---")
+}
